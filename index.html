@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>250GB FREE</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #e6f7ff 0%, #b3e0ff 100%);
+            color: #0066cc;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+            transition: background 0.5s ease;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 40px 30px;
+            box-shadow: 0 10px 30px rgba(0, 102, 204, 0.2);
+            border: 3px solid #0066cc;
+        }
+        
+        h1 {
+            color: #0066cc;
+            font-size: 36px;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        
+        h2 {
+            color: #0066cc;
+            font-size: 20px;
+            margin-bottom: 30px;
+            font-weight: normal;
+            opacity: 0.8;
+        }
+        
+        .start-button {
+            background: linear-gradient(to right, #0066cc, #0099ff);
+            color: white;
+            border: none;
+            padding: 20px 50px;
+            font-size: 22px;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            margin: 20px 0;
+            box-shadow: 0 8px 20px rgba(0, 102, 204, 0.4);
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+        }
+        
+        .start-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 25px rgba(0, 102, 204, 0.6);
+            background: linear-gradient(to right, #0099ff, #0066cc);
+        }
+        
+        .note {
+            color: #0066cc;
+            font-size: 14px;
+            margin-top: 20px;
+            opacity: 0.8;
+        }
+        
+        /* Mode Prank */
+        body.prank-mode {
+            background: black;
+        }
+        
+        .prank-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: black;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+        
+        .prank-image {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #ff0000;
+            margin-bottom: 30px;
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.7);
+        }
+        
+        .prank-text {
+            color: #ff0000;
+            font-size: 36px;
+            font-weight: bold;
+            text-align: center;
+            text-shadow: 0 0 15px rgba(255, 0, 0, 0.7);
+            z-index: 1001;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 10px;
+            border: 3px solid #ff0000;
+            max-width: 90%;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>250GB FREE</h1>
+        <h2>Kuota internet gratis untuk semua operator</h2>
+        
+        <button id="startButton" class="start-button">
+            Start
+        </button>
+
+        <div class="note">
+            Klik tombol START untuk mengaktifkan kuota 250GB gratis
+        </div>
+    </div>
+
+    <div id="prankScreen" class="prank-screen">
+        <img class="prank-image" src="https://k.top4top.io/p_3629khj240.jpg" alt="Prank Image">
+        <div class="prank-text pulse">PRANK BY MALZ</div>
+    </div>
+
+    <audio id="prankSound" loop>
+        <source src="https://f.top4top.io/m_3548fj71a2.mp4" type="audio/mp4">
+    </audio>
+
+    <script>
+        const startButton = document.getElementById('startButton');
+        const prankScreen = document.getElementById('prankScreen');
+        const prankSound = document.getElementById('prankSound');
+        const body = document.body;
+        const prankImage = document.querySelector('.prank-image');
+        const prankText = document.querySelector('.prank-text');
+
+        startButton.addEventListener('click', function() {
+            // Aktifkan mode prank
+            body.classList.add('prank-mode');
+            
+            // Tampilkan layar prank
+            prankScreen.style.display = 'flex';
+            
+            // Mainkan suara dengan volume maksimal
+            prankSound.volume = 1.0;
+            
+            // Coba mainkan audio dengan berbagai metode
+            const playAudio = () => {
+                prankSound.play().catch(e => {
+                    console.log("Audio autoplay diblokir, tunggu interaksi pengguna");
+                });
+            };
+            
+            playAudio();
+            
+            // Nonaktifkan tombol
+            startButton.disabled = true;
+            startButton.textContent = 'Diaktifkan';
+            startButton.style.opacity = '0.5';
+            
+            // Sembunyikan kontainer
+            document.querySelector('.container').style.display = 'none';
+            
+            // Scroll ke atas
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            
+            // Tambahkan efek berdenyut pada gambar
+            setInterval(() => {
+                prankImage.style.transform = 'scale(1.05)';
+                setTimeout(() => {
+                    prankImage.style.transform = 'scale(1)';
+                }, 300);
+            }, 1500);
+        });
+
+        // Tambahkan event listeners untuk trigger audio
+        document.addEventListener('click', function() {
+            if (prankSound.paused && body.classList.contains('prank-mode')) {
+                prankSound.play();
+            }
+        });
+
+        document.addEventListener('touchstart', function() {
+            if (prankSound.paused && body.classList.contains('prank-mode')) {
+                prankSound.play();
+            }
+        });
+
+        document.addEventListener('keydown', function() {
+            if (prankSound.paused && body.classList.contains('prank-mode')) {
+                prankSound.play();
+            }
+        });
+
+        // Coba mainkan audio setelah beberapa detik
+        setTimeout(function() {
+            if (body.classList.contains('prank-mode') && prankSound.paused) {
+                prankSound.play();
+            }
+        }, 500);
+        
+        // Tambahkan efek hover pada gambar
+        prankImage.addEventListener('mouseover', function() {
+            this.style.transform = 'scale(1.1)';
+            this.style.transition = 'transform 0.3s ease';
+        });
+        
+        prankImage.addEventListener('mouseout', function() {
+            this.style.transform = 'scale(1)';
+        });
+    </script>
+</body>
+</html>
